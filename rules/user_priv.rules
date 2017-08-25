@@ -1,0 +1,6 @@
+#create delete grante user in mysql
+create user ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*@( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )* identified by ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*
+grant privileges on db.table to ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*@( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )* identified by ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*
+grant all on db.table to ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*@( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )* identified by ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*
+revoke privileges on db.table to ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*@( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )* identified by ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*
+drop user ( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*@( )*(')*( )*( )*[a-zA-Z]\S+( )*( )*(')*( )*

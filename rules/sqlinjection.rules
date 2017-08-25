@@ -1,0 +1,287 @@
+#pick up from sqlmap: https://github.com/sqlmapproject/sqlmap
+#target information test
+VERSION\(\)
+CURRENT_USER\(\)
+DATABASE\(\)
+\@\@HOSTNAME
+SELECT table_comment FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND table_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT column_comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND table_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND column_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT super_priv FROM mysql.user WHERE user=( )*(')*()*[a-zA-Z]\S+( )*(')*()* LIMIT 0,1\)=( )*(')*()*Y( )*(')*()*
+SELECT name FROM mysql.func WHERE name=( )*(')*()*[a-zA-Z]\S+( )*(')*()* LIMIT 0,1\)=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT user FROM mysql.user
+SELECT grantee FROM INFORMATION_SCHEMA.USER_PRIVILEGES
+SELECT DISTINCT\(user\) FROM mysql.user LIMIT ( )*[1-9]\d*( )*,1
+SELECT DISTINCT\(grantee\) FROM INFORMATION_SCHEMA.USER_PRIVILEGES LIMIT ( )*[1-9]\d*( )*,1
+SELECT COUNT\(DISTINCT\(user\)\) FROM mysql.user
+SELECT COUNT\(DISTINCT\(grantee\)\) FROM INFORMATION_SCHEMA.USER_PRIVILEGES
+SELECT user,password FROM mysql.user
+SELECT COUNT\(DISTINCT\(password\)\) FROM mysql.user WHERE user=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT DISTINCT\(password\) FROM mysql.user WHERE user=( )*(')*()*[a-zA-Z]\S+( )*(')*()* LIMIT ( )*[1-9]\d*( )*,1
+SELECT user,select_priv,insert_priv,update_priv,delete_priv,create_priv,drop_priv,reload_priv,shutdown_priv,process_priv,file_priv,grant_priv,references_priv,index_priv,alter_priv,show_db_priv,super_priv,create_tmp_table_priv,lock_tables_priv,execute_priv,repl_slave_priv,repl_client_priv,create_view_priv,show_view_priv,create_routine_priv,alter_routine_priv,create_user_priv FROM mysql.user
+SELECT grantee,privilege_type FROM INFORMATION_SCHEMA.USER_PRIVILEGES
+SELECT select_priv,insert_priv,update_priv,delete_priv,create_priv,drop_priv,reload_priv,shutdown_priv,process_priv,file_priv,grant_priv,references_priv,index_priv,alter_priv,show_db_priv,super_priv,create_tmp_table_priv,lock_tables_priv,execute_priv,repl_slave_priv,repl_client_priv,create_view_priv,show_view_priv,create_routine_priv,alter_routine_priv,create_user_priv FROM mysql.user WHERE user=( )*(')*()*[a-zA-Z]\S+( )*(')*()* LIMIT ( )*[1-9]\d*( )*,1
+SELECT DISTINCT\(privilege_type\) FROM INFORMATION_SCHEMA.USER_PRIVILEGES WHERE grantee ( )*[a-zA-Z]\S+( )* ( )*(')*()*[a-zA-Z]\S+( )*(')*()* LIMIT ( )*[1-9]\d*( )*,1
+SELECT COUNT\(\*\) FROM mysql.user WHERE user=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT COUNT\(DISTINCT\(privilege_type\)\) FROM INFORMATION_SCHEMA.USER_PRIVILEGES WHERE grantee ( )*[a-zA-Z]\S+( )* ( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT db FROM mysql.db
+SELECT schema_name FROM INFORMATION_SCHEMA.SCHEMATA
+SELECT DISTINCT\(db\) FROM mysql.db LIMIT ( )*[1-9]\d*( )*,1
+SELECT DISTINCT\(schema_name\) FROM INFORMATION_SCHEMA.SCHEMATA LIMIT ( )*[1-9]\d*( )*,1
+SELECT COUNT\(DISTINCT\(db\)\) FROM mysql.db
+SELECT COUNT\(DISTINCT\(schema_name\)\) FROM INFORMATION_SCHEMA.SCHEMATA
+SELECT table_schema,table_name FROM INFORMATION_SCHEMA.TABLES
+SELECT COUNT\(table_name\) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()* LIMIT ( )*[1-9]\d*( )*,1
+SELECT column_name,column_type FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT column_type FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND column_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT COUNT\(column_name\) FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name=( )*(')*()*[a-zA-Z]\S+( )*(')*()* AND table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT ( )*[a-zA-Z]\S+( )* FROM ( )*[a-zA-Z]\S+( )*.( )*[a-zA-Z]\S+( )* ORDER BY ( )*[a-zA-Z]\S+( )*
+SELECT COUNT\(\*\) FROM ( )*[a-zA-Z]\S+( )*.( )*[a-zA-Z]\S+( )*
+SELECT ( )*[a-zA-Z]\S+( )* FROM ( )*[a-zA-Z]\S+( )*.( )*[a-zA-Z]\S+( )* ORDER BY ( )*[a-zA-Z]\S+( )* LIMIT ( )*[1-9]\d*( )*,1
+SELECT db FROM mysql.db WHERE ( )*[a-zA-Z]\S+( )*
+SELECT schema_name FROM INFORMATION_SCHEMA.SCHEMATA WHERE ( )*[a-zA-Z]\S+( )*
+SELECT DISTINCT\(db\) FROM mysql.db WHERE ( )*[a-zA-Z]\S+( )*
+SELECT COUNT\(DISTINCT\(schema_name\)\) FROM INFORMATION_SCHEMA.SCHEMATA WHERE ( )*[a-zA-Z]\S+( )*
+SELECT DISTINCT\(schema_name\) FROM INFORMATION_SCHEMA.SCHEMATA WHERE ( )*[a-zA-Z]\S+( )*
+SELECT COUNT\(DISTINCT\(db\)\) FROM mysql.db WHERE ( )*[a-zA-Z]\S+( )*
+SELECT table_schema,table_name FROM INFORMATION_SCHEMA.TABLES WHERE ( )*[a-zA-Z]\S+( )*
+SELECT DISTINCT\(table_name\) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT COUNT\(DISTINCT\(table_schema\)\) FROM INFORMATION_SCHEMA.TABLES WHERE ( )*[a-zA-Z]\S+( )*
+SELECT DISTINCT\(table_schema\) FROM INFORMATION_SCHEMA.TABLES WHERE ( )*[a-zA-Z]\S+( )*
+SELECT COUNT\(DISTINCT\(table_name\)\) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT table_schema,table_name FROM INFORMATION_SCHEMA.COLUMNS WHERE ( )*[a-zA-Z]\S+( )*
+SELECT DISTINCT\(table_name\) FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+SELECT COUNT\(DISTINCT\(table_schema\)\) FROM INFORMATION_SCHEMA.COLUMNS WHERE ( )*[a-zA-Z]\S+( )*
+SELECT DISTINCT\(table_schema\) FROM INFORMATION_SCHEMA.COLUMNS WHERE ( )*[a-zA-Z]\S+( )*
+SELECT COUNT\(DISTINCT\(table_name\)\) FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema=( )*(')*()*[a-zA-Z]\S+( )*(')*()*
+
+#sql inject test
+#boolean-based blind tests - where/having clause1
+and ( )*[1-9]\d+( )*=( )*[1-9]\d+( )*
+or ( )*[1-9]\d+( )*=( )*[1-9]\d+( )*
+or not ( )*[1-9]\d+( )*=( )*[1-9]\d+( )*
+rlike \(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else 0x28 end\)\)
+and make_set\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)
+or make_set\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)
+and elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)
+or elt \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)
+and \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\)\*( )*[1-9]\d+( )*
+or \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\)\*( )*[1-9]\d+( )*
+and \(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then null else cast\(( )*(')*()*[1-9]\d+( )*(')*()* as numeric\) end\)\) is null
+or \(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then null else cast\(( )*(')*()*[1-9]\d+( )*(')*()* as numeric\) end\)\) is null
+and \(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then null else ctxsys.drithsx.sn\(1,( )*[1-9]\d+( )*\) end\) from dual\) is null
+or \(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then null else ctxsys.drithsx.sn\(1,( )*[1-9]\d+( )*\) end\) from dual\) is null
+
+#boolean-based blind tests - parameter replace
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from information_schema.plugins\) end\)
+make_set\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)
+make_set\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d*( )*\)
+elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)
+elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d*( )*\)
+
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else 1/\(select 0\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else 1/\(select 0\) end\)
+select \* from generate_series\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*,case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) limit 1
+select ( )*[1-9]\d*( )* from generate_series\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*,case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) limit 1
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* union all select ( )*[1-9]\d+( )*\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* union all select ( )*[1-9]\d+( )*\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else cast\(1 as int\)/\(select 0 from dual\) end\) from dual
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else cast\(1 as int\)/\(select 0 from dual\) end\) from dual
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else 1/0 end\) from sysmaster:sysdual\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else ( )*[1-9]\d+( )* end\) from sysmaster:sysdual\)
+iif\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d+( )*,1/0\)
+iif\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d*( )*,1/0\)
+case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from dual union select ( )*[1-9]\d+( )* from dual\) end
+case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from dual union select ( )*[1-9]\d+( )* from dual\) end
+
+#boolean-based blind tests - order by, group by clause 
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from information_schema.plugins\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from information_schema.plugins\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from information_schema.plugins\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from information_schema.plugins\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 1/\(select 0\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else 1/\(select 0\) end\)
+select \* from generate_series\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*,case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) limit 1
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* union all select ( )*[1-9]\d+( )*\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* union all select ( )*[1-9]\d+( )*\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else cast\(1 as int\)/\(select 0 from dual\) end\) from dual
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d*( )* else cast\(1 as int\)/\(select 0 from dual\) end\) from dual
+iif\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1,1/0
+iif\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,( )*[1-9]\d*( )*,1/0
+case when ( )*[1-9]\d+( )*=( )*[1-9]\d+( )* then 1 else null end
+
+#boolean-based blind tests - stacked queries
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from information_schema.plugins\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from information_schema.plugins\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else 1/\(select 0\) end\)
+select \* from generate_series\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*,case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) limit 1
+iif\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) select ( )*[1-9]\d+( )* else drop function ( )*[a-zA-Z]\w*( )*
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* union all select ( )*[1-9]\d+( )*\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*[1-9]\d+( )* else cast\(1 as int\)/\(select 0 from dual\) end\) from dual
+iif\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1,1/0\)
+
+#error-based tests - where, having, order by or group by clause
+and \(select 2\*\(if\(\(select \* from \(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,( )*(')*()*x( )*(')*()*\)\)s\), 8446744073709551610, 8446744073709551610\)\)\)
+or \(select 2\*\(if\(\(select \* from \(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\([query]\),( )*(')*()*[1-9]\d*( )*(')*()*,( )*(')*()*x( )*(')*()*\)\)s\), 8446744073709551610, 8446744073709551610\)\)\)
+or exp\(~\(select \* from \(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,( )*(')*()*x( )*(')*()*\)\)x\)\)
+and json_keys\(\(select convert\(\(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\) using utf8\)\)\)
+or json_keys\(\(select convert\(\(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\) using utf8\)\)\)
+and \(select ( )*[1-9]\d+( )* from\(select count\(\*\),concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\)x from information_schema.plugins group by x\)a\)
+or \(select ( )*[1-9]\d+( )* from\(select count\(\*\),concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\)x from information_schema.plugins group by x\)a\)
+and extractvalue\(( )*[1-9]\d+( )*,concat\(( )*(')*()*\\( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+or extractvalue\(( )*[1-9]\d+( )*,concat\(( )*(')*()*\\( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+and updatexml\(( )*[1-9]\d+( )*,concat\(( )*(')*()*.( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\),( )*[1-9]\d+( )*\)
+or updatexml\(( )*[1-9]\d+( )*,concat\(( )*(')*()*.( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\),( )*[1-9]\d+( )*\)
+and row\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)>\(select count\(\*\),concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\)x from \(select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )*\)a group by x\)
+or row\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)>\(select count\(\*\),concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\)x from \(select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )*\)a group by x\)
+or 1 group by concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\) having min\(0\)
+and ( )*[1-9]\d+( )*=cast\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\)::text\|\|( )*(')*()*[1-9]\d*( )*(')*()* as numeric\)
+or ( )*[1-9]\d+( )*=cast\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\)::text\|\|( )*(')*()*[1-9]\d*( )*(')*()* as numeric\)
+and ( )*[1-9]\d+( )* in \(select \(( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+or ( )*[1-9]\d+( )* in \(select \(( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+and ( )*[1-9]\d+( )*=convert\(int,\(select ( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+or ( )*[1-9]\d+( )*=convert\(int,\(select ( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+and ( )*[1-9]\d+( )*=concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)
+or ( )*[1-9]\d+( )*=concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)
+and ( )*[1-9]\d+( )*=\(select upper\(xmltype\(chr\(60\)\|\|chr\(58\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|chr\(62\)\)\) from dual\)
+or ( )*[1-9]\d+( )*=\(select upper\(xmltype\(chr\(60\)\|\|chr\(58\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|chr\(62\)\)\) from dual\)
+and ( )*[1-9]\d+( )*=utl_inaddr.get_host_address\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)
+or ( )*[1-9]\d+( )*=utl_inaddr.get_host_address\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)
+and ( )*[1-9]\d+( )*=ctxsys.drithsx.sn\(( )*[1-9]\d+( )*,\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+or ( )*[1-9]\d+( )*=ctxsys.drithsx.sn\(( )*[1-9]\d+( )*,\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+and ( )*[1-9]\d+( )*=dbms_utility.sqlid_to_sqlhash\(\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+or ( )*[1-9]\d+( )*=dbms_utility.sqlid_to_sqlhash\(\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+and ( )*[1-9]\d+( )*=\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select case ( )*[1-9]\d+( )* when ( )*[1-9]\d+( )* then 1 else 0 end from rdb\$database\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)
+or ( )*[1-9]\d+( )*=\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select case ( )*[1-9]\d+( )* when ( )*[1-9]\d+( )* then 1 else 0 end from rdb\$database\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)
+
+#error-based tests - limit clause
+procedure analyse\(extractvalue\(( )*[1-9]\d+( )*,concat\(( )*(')*()*\\( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\),1\)
+
+#error-based tests - parameter replace
+select 2\*\(if\(\(select \* from \(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,( )*(')*()*x( )*(')*()*\)\)s\), 8446744073709551610, 8446744073709551610\)\)
+exp\(~\(select \* from \(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,( )*(')*()*x( )*(')*()*\)\)x\)\)
+json_keys\(\(select convert\(\(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\) using utf8\)\)
+select ( )*[1-9]\d+( )* from\(select count\(\*\),concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\)x from information_schema.plugins group by x\)a
+updatexml\(( )*[1-9]\d+( )*,concat\(( )*(')*()*.( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\),( )*[1-9]\d+( )*\)
+extractvalue\(( )*[1-9]\d+( )*,concat\(( )*(')*()*\\( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+cast\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\)::text\|\|( )*(')*()*[1-9]\d*( )*(')*()* as numeric\)
+cast\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select 1 from generate_series\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*,case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) limit 1\)::text\|\|( )*(')*()*[1-9]\d*( )*(')*()* as numeric\)
+convert\(int,\(select ( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+select ( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*
+select upper\(xmltype\(chr\(60\)\|\|chr\(58\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|chr\(62\)\)\) from dual
+select ( )*[1-9]\d+( )*=\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select case ( )*[1-9]\d+( )* when ( )*[1-9]\d+( )* then 1 else 0 end from rdb\$database\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\)
+select ( )*[1-9]\d+( )* from \(select 2\*\(if\(\(select \* from \(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,( )*(')*()*x( )*(')*()*\)\)s\), 8446744073709551610, 8446744073709551610\)\)\)x
+select ( )*[1-9]\d+( )* from \(select exp\(~\(select \* from \(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,( )*(')*()*x( )*(')*()*\)\)x\)\)\)s
+select ( )*[1-9]\d+( )* from \(select json_keys\(\(select convert\(\(select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)\) using utf8\)\)\)\)x
+select ( )*[1-9]\d+( )* from\(select count\(\*\),concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\)x from information_schema.plugins group by x\)a
+extractvalue\(( )*[1-9]\d+( )*,concat\(( )*(')*()*\\( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)
+pdatexml\(( )*[1-9]\d+( )*,concat\(( )*(')*()*.( )*(')*()*,( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\),( )*[1-9]\d+( )*
+select ( )*[1-9]\d+( )* from \(select row\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*\)>\(select count\(\*\),concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*,floor\(rand\(0\)\*2\)\)x from \(select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )* union select ( )*[1-9]\d+( )*\)a group by x\)\)s
+cast\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\)::text\|\|( )*(')*()*[1-9]\d*( )*(')*()* as numeric\)
+cast\(( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select 1 from generate_series\(( )*[1-9]\d+( )*,( )*[1-9]\d+( )*,case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) limit 1\)::text\|\|( )*(')*()*[1-9]\d*( )*(')*()* as numeric\)
+select ( )*[1-9]\d+( )* where ( )*[1-9]\d+( )*=convert\(int,\(select ( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*\)\)
+select upper\(xmltype\(chr\(60\)\|\|chr\(58\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*\|\|chr\(62\)\)\) from dual
+
+#inline queries tests
+select concat\(( )*(')*()*[1-9]\d*( )*(')*()*,\(select \(elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,1\)\)\),( )*(')*()*[1-9]\d*( )*(')*()*\)
+select ( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\)::text\|\|( )*(')*()*[1-9]\d*( )*(')*()*
+select ( )*(')*()*[1-9]\d*( )*(')*()*\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then ( )*(')*()*1( )*(')*()* else ( )*(')*()*0( )*(')*()* end\)\)+( )*(')*()*[1-9]\d*( )*(')*()*
+select ( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\) from dual\)\|\|( )*(')*()*[1-9]\d*( )*(')*()* from dual
+select ( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then 1 else 0 end\)\)\|\|( )*(')*()*[1-9]\d*( )*(')*()*
+select ( )*(')*()*[1-9]\d*( )*(')*()*\|\|\(case ( )*[1-9]\d+( )* when ( )*[1-9]\d+( )* then 1 else 0 end\)\|\|( )*(')*()*[1-9]\d*( )*(')*()* from rdb\$database
+
+#stacked queries tests
+select sleep\(( )*[1-9]\d*( )*\)
+select \* from \(select\(sleep\(( )*[1-9]\d*( )*\)\)\)( )*[a-zA-Z]\w*( )*
+select \* from \(select\(sleep\(( )*[1-9]\d*( )*\)\)\)( )*[a-zA-Z]\w*( )*
+select benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)
+select benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)
+select pg_sleep\(( )*[1-9]\d*( )*\)
+select count\(\*\) from generate_series\(1,( )*[1-9]\d*( )*000000\)
+create or replace function sleep\(int\) returns int as ( )*(')*()*/lib/libc.so.6( )*(')*()*,( )*(')*()*sleep( )*(')*()* language ( )*(')*()*c( )*(')*()* strict; select sleep\(( )*[1-9]\d*( )*\)
+create or replace function sleep\(int\) returns int as ( )*(')*()*/lib/libc.so.6( )*(')*()*,( )*(')*()*sleep( )*(')*()* language ( )*(')*()*c( )*(')*()* strict; select sleep\(( )*[1-9]\d*( )*\)
+waitfor delay ( )*(')*()*0:0:( )*[1-9]\d*( )*(')*()*
+waitfor delay ( )*(')*()*0:0:( )*[1-9]\d*( )*(')*()*
+select dbms_pipe.receive_message\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*,( )*[1-9]\d*( )*\) from dual
+select dbms_pipe.receive_message\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*,( )*[1-9]\d*( )*\) from dual
+select count\(\*\) from all_users t1,all_users t2,all_users t3,all_users t4,all_users t5
+select case when \([inference]\) then \(select count\(\*\) from all_users t1,all_users t2,all_users t3,all_users t4,all_users t5\) else ( )*[1-9]\d+( )* end from dual
+begin dbms_lock.sleep\(( )*[1-9]\d*( )*\); end
+begin user_lock.sleep\(( )*[1-9]\d*( )*\); end
+select count\(\*\) from sysibm.systables as t1,sysibm.systables as t2,sysibm.systables as t3
+select like\(( )*(')*()*abcdefg( )*(')*()*,upper\(hex\(randomblob\(( )*[1-9]\d*( )*00000000/2\)\)\)\)
+select count\(\*\) from rdb\$fields as t1,rdb\$types as t2,rdb\$collations as t3,rdb\$functions as t4
+select count\(\*\) from domain.domains as t1,domain.columns as t2,domain.tables as t3
+call regexp_substring\(repeat\(right\(char\(( )*[1-9]\d+( )*\),0\),( )*[1-9]\d*( )*00000000\),null\)
+call regexp_substring\(repeat\(left\(crypt_key\(( )*(')*()*aes( )*(')*()*,null\),0\),( )*[1-9]\d*( )*00000000\),null\)
+
+#time-based boolean tests
+and sleep\(( )*[1-9]\d*( )*\)
+or sleep\(( )*[1-9]\d*( )*\)
+and \(select \* from \(select\(sleep\(( )*[1-9]\d*( )*\)\)\)( )*[a-zA-Z]\w*( )*\)
+or \(select \* from \(select\(sleep\(( )*[1-9]\d*( )*\)\)\)( )*[a-zA-Z]\w*( )*\)
+and ( )*[1-9]\d+( )*=benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)
+or ( )*[1-9]\d+( )*=benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)
+rlike sleep\(( )*[1-9]\d*( )*\)
+rlike \(select \* from \(select\(sleep\(( )*[1-9]\d*( )*\)\)\)( )*[a-zA-Z]\w*( )*\)
+and elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,sleep\(( )*[1-9]\d*( )*\)\)
+or elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,sleep\(( )*[1-9]\d*( )*\)\)
+and ( )*[1-9]\d+( )*=\(select ( )*[1-9]\d+( )* from pg_sleep\(( )*[1-9]\d*( )*\)\)
+or ( )*[1-9]\d+( )*=\(select ( )*[1-9]\d+( )* from pg_sleep\(( )*[1-9]\d*( )*\)\)
+and ( )*[1-9]\d+( )*=\(select count\(\*\) from generate_series\(1,( )*[1-9]\d*( )*000000\)\)
+or ( )*[1-9]\d+( )*=\(select count\(\*\) from generate_series\(1,( )*[1-9]\d*( )*000000\)\)
+and ( )*[1-9]\d+( )*=\(select count\(\*\) from generate_series\(1,( )*[1-9]\d*( )*000000\)\)
+or ( )*[1-9]\d+( )*=\(select count\(\*\) from generate_series\(1,( )*[1-9]\d*( )*000000\)\)
+waitfor delay ( )*(')*()*0:0:( )*[1-9]\d*( )*(')*()*
+waitfor delay ( )*(')*()*0:0:( )*[1-9]\d*( )*(')*()*
+and ( )*[1-9]\d+( )*=\(select count\(\*\) from sysusers as sys1,sysusers as sys2,sysusers as sys3,sysusers as sys4,sysusers as sys5,sysusers as sys6,sysusers as sys7\)
+or ( )*[1-9]\d+( )*=\(select count\(\*\) from sysusers as sys1,sysusers as sys2,sysusers as sys3,sysusers as sys4,sysusers as sys5,sysusers as sys6,sysusers as sys7\)
+and ( )*[1-9]\d+( )*=dbms_pipe.receive_message\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*,( )*[1-9]\d*( )*\)
+or ( )*[1-9]\d+( )*=dbms_pipe.receive_message\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*,( )*[1-9]\d*( )*\)
+and ( )*[1-9]\d+( )*=\(select count\(\*\) from all_users t1,all_users t2,all_users t3,all_users t4,all_users t5\)
+or ( )*[1-9]\d+( )*=\(select count\(\*\) from all_users t1,all_users t2,all_users t3,all_users t4,all_users t5\)
+and ( )*[1-9]\d+( )*=like\(( )*(')*()*abcdefg( )*(')*()*,upper\(hex\(randomblob\(( )*[1-9]\d*( )*00000000/2\)\)\)\)
+or ( )*[1-9]\d+( )*=like\(( )*(')*()*abcdefg( )*(')*()*,upper\(hex\(randomblob\(( )*[1-9]\d*( )*00000000/2\)\)\)\)
+and ( )*[1-9]\d+( )*=\(select count\(\*\) from rdb\$fields as t1,rdb\$types as t2,rdb\$collations as t3,rdb\$functions as t4\)
+or ( )*[1-9]\d+( )*=\(select count\(\*\) from rdb\$fields as t1,rdb\$types as t2,rdb\$collations as t3,rdb\$functions as t4\)
+and ( )*[1-9]\d+( )*=\(select count\(\*\) from domain.domains as t1,domain.columns as t2,domain.tables as t3\)
+or ( )*[1-9]\d+( )*=\(select count\(\*\) from domain.domains as t1,domain.columns as t2,domain.tables as t3\)
+and ( )*(')*()*[a-zA-Z]\w*( )*(')*()*=regexp_substring\(repeat\(right\(char\(( )*[1-9]\d+( )*\),0\),( )*[1-9]\d*( )*000000000\),null\)
+or ( )*(')*()*[a-zA-Z]\w*( )*(')*()*=regexp_substring\(repeat\(right\(char\(( )*[1-9]\d+( )*\),0\),( )*[1-9]\d*( )*000000000\),null\)
+and ( )*(')*()*[a-zA-Z]\w*( )*(')*()*=regexp_substring\(repeat\(left\(crypt_key\(( )*(')*()*aes( )*(')*()*,null\),0\),( )*[1-9]\d*( )*00000000\),null\)
+or ( )*(')*()*[a-zA-Z]\w*( )*(')*()*=regexp_substring\(repeat\(left\(crypt_key\(( )*(')*()*aes( )*(')*()*,null\),0\),( )*[1-9]\d*( )*00000000\),null\)
+and ( )*[1-9]\d+( )*=\(select count\(\*\) from sysmaster:syspaghdr\)
+or ( )*[1-9]\d+( )*=\(select count\(\*\) from sysmaster:syspaghdr\)
+
+#time-based boolean tests - numerous clauses
+procedure analyse\(extractvalue\(( )*[1-9]\d+( )*,concat\(( )*(')*()*\\( )*(')*()*,\(benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)\)\)\),1\)
+procedure analyse\(extractvalue\(( )*[1-9]\d+( )*,concat\(( )*(')*()*\\( )*(')*()*,\(benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)\)\)\),1\)
+case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then sleep\(( )*[1-9]\d*( )*\) else ( )*[1-9]\d+( )* end
+select \* from \(select\(sleep\(( )*[1-9]\d*( )*\)\)\)( )*[a-zA-Z]\w*( )*
+case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)\) else ( )*[1-9]\d+( )*
+( )*[1-9]\d+( )*=( )*[1-9]\d+( )* and sleep\(( )*[1-9]\d*( )*\)
+elt\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,sleep\(( )*[1-9]\d*( )*\)\)
+make_set\(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*,sleep\(( )*[1-9]\d*( )*\)\)
+select ( )*[1-9]\d+( )* from pg_sleep\(( )*[1-9]\d*( )*\)
+select count\(\*\) from generate_series\(1,( )*[1-9]\d*( )*000000\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select count\(\*\) from sysusers as sys1,sysusers as sys2,sysusers as sys3,sysusers as sys4,sysusers as sys5,sysusers as sys6,sysusers as sys7\) else ( )*[1-9]\d+( )* end\)
+begin if \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then dbms_lock.sleep\(( )*[1-9]\d*( )*\); else dbms_lock.sleep\(0\); end if; end;
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then dbms_pipe.receive_message\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*,( )*[1-9]\d*( )*\) else ( )*[1-9]\d+( )* end\) from dual
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select count\(\*\) from all_users t1,all_users t2,all_users t3,all_users t4,all_users t5\) else ( )*[1-9]\d+( )* end\) from dual
+select like\(( )*(')*()*abcdefg( )*(')*()*,upper\(hex\(randomblob\(( )*[1-9]\d*( )*00000000/2\)\)\)\)
+select count\(\*\) from rdb\$fields as t1,rdb\$types as t2,rdb\$collations as t3,rdb\$functions as t4
+select count\(\*\) from domain.domains as t1,domain.columns as t2,domain.tables as t3
+select count\(\*\) from sysibm.systables as t1,sysibm.systables as t2,sysibm.systables as t3
+
+#time-based boolean tests - order by, group by clause
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then sleep\(( )*[1-9]\d*( )*\) else ( )*[1-9]\d+( )* end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select benchmark\(( )*[1-9]\d*( )*000000,md5\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*\)\)\) else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* from mysql.db\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select ( )*[1-9]\d+( )* from pg_sleep\(( )*[1-9]\d*( )*\)\) else 1/\(select 0\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select count\(\*\) from generate_series\(1,( )*[1-9]\d*( )*000000\)\) else 1/\(select 0\) end\)
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select count\(\*\) from sysusers as sys1,sysusers as sys2,sysusers as sys3,sysusers as sys4,sysusers as sys5,sysusers as sys6,sysusers as sys7\) else ( )*[1-9]\d+( )*\*\(select ( )*[1-9]\d+( )* union all select ( )*[1-9]\d+( )*\) end\)
+begin if \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then dbms_lock.sleep\(( )*[1-9]\d*( )*\); else dbms_lock.sleep\(0\); end if; end;
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then dbms_pipe.receive_message\(( )*(')*()*[a-zA-Z]\w*( )*(')*()*,( )*[1-9]\d*( )*\) else 1/\(select 0 from dual\) end\) from dual
+select \(case when \(( )*[1-9]\d+( )*=( )*[1-9]\d+( )*\) then \(select count\(\*\) from all_users t1,all_users t2,all_users t3,all_users t4,all_users t5\) else 1/\(select 0 from dual\) end\) from dual
+
+
