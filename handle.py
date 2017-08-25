@@ -13,8 +13,8 @@ import time
 # json
 # {
 #     "logid": 2072,
-#     "dbname": "laifenqi",
-#     "username": "zhangyanjun",
+#     "dbname": "",
+#     "username": "",
 #     "sqlstr": "select * from news where type =5 order by created_at desc limit 1000 ",
 #     "costtime": 1492,
 #     "rowcount": 1000,
@@ -24,7 +24,7 @@ import time
 
 
 def get_messages(dbid, sqlstring_c, checkname, btime, etime):
-    s = "http://dba.qudian.online/face.html?action=sqllog&dbid=" + dbid + "&sqlstring_c=" + sqlstring_c + "&checkname=" + checkname + "&btime=" + btime + "&etime=" + etime + "&returntype=json&token=XHBITX0VE8RF3Y4PR6#"
+    s = "" + dbid + "&sqlstring_c=" + sqlstring_c + "&checkname=" + checkname + "&btime=" + btime + "&etime=" + etime + "&returntype=json&token=XHBITX0VE8RF3Y4PR6#"
     r = requests.get(s)
     m = r.text.replace('},{', '}},{{').split('},{')
     return m
@@ -212,8 +212,8 @@ def audit_max_oneday(u_l144=[]):
 
 def sms(content):
     print 'sms'
-    url = 'http://10.157.92.228:8001/sms/queue_sms_send'
-    param = {'mobile': '18515667715', 'content': content, 'action': '666'}
+    url = ''
+    param = {'mobile': '', 'content': content, 'action': '666'}
     r = requests.post(url, param)
     print r.text
     return r.text
